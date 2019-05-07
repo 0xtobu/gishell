@@ -16,3 +16,8 @@ def create_parser():
     global_settings.add_argument('-p','--protocol', help='Protocol for packets, TCP or UDP' ,dest="protocol")
     
     return parse
+
+def parse_arguments(arguments):
+    args = arguments.parse_args()
+    return args
+    
