@@ -12,8 +12,6 @@ class payload_module(template.payload_module):
         self.platform = "linux"
         self.arch = "x64"
         self.address = self.configure_socketaddr(userinput.lhost, userinput.lport)
-        #self.lhost = userinput.lhost
-        #self.lport = userinput.lport
 
         self.assembly = (
             "socket:                             "

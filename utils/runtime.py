@@ -2,6 +2,7 @@ from utils import load
 from shellcode.x86 import *
 from sys import exit
 from shellcode.x86 import reverse_TCP
+from utils.input_parser import gui
 
 class construc:
     loaded_payloads = load.payloads()
@@ -10,19 +11,23 @@ class construc:
     def main(self, parsed_userinput):
 
         if parsed_userinput.list:
-            print('\nAvilable payloads:')
-            for key in self.loaded_payloads:
-                print(key)
+            print(gui.info('Avilable payloads:'))
 
-            print('\nAvilbable encoders:')
+            for key in self.loaded_payloads:
+                print("- " + key)
+
+            print('\n')
+            print(gui.info('Avilable encoders:'))
 
             for key in self.loaded_encoders:
-                print(key)
+                print("- " + key)
 
             exit(0)
 
-        #for payload_module in self.loaded_payloads:
-        #    print(payload_module.lower())
+        if parsed_userinput.lhost and parsed_userinput.lport:
+            print(gui.success('Creating payload!:'))
+            e = reverse_TCP.payload_module(parsed_userinput)
+            e.run()
 
-        e = reverse_TCP.payload_module(parsed_userinput)
-        e.run()
+        else:
+            print(gui.warning('Could not find LHOST param or LPORT'))

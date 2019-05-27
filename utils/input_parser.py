@@ -70,7 +70,7 @@ class gui:
 
     @staticmethod
     def info(message):
-        return '[' + Fore.LIGHTBLUE_EX + '-' + Style.RESET_ALL + '] '
+        return '[' + Fore.LIGHTBLUE_EX + '*' + Style.RESET_ALL + '] ' + message
 
     @staticmethod
     def success(message):
